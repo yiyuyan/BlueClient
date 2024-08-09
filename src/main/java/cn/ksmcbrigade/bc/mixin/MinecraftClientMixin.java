@@ -36,6 +36,11 @@ public abstract class MinecraftClientMixin {
 
     @Shadow @Final private DefaultResourcePack defaultResourcePack;
 
+    @Shadow
+    public static MinecraftClient getInstance() {
+        return null;
+    }
+
     /**
      * @author KSmc_brigade
      * @reason custom the window title
@@ -71,5 +76,27 @@ public abstract class MinecraftClientMixin {
     public void icon(RunArgs args, CallbackInfo ci) throws IOException {
         this.window.setIcon(this.defaultResourcePack, Icons.RELEASE);
         DarkUtils.setDark(this.window);
+    }
+
+    @Inject(method = "tick",at = @At("HEAD"))
+    public void tick(CallbackInfo ci){
+        BlueClient.config.getEnables().forEach(h -> {
+            try {
+                h.clientTick(getInstance());
+            } catch (Exception e) {
+                BlueClient.LOGGER.error("error in client tick",e);
+            }
+        });
+    }
+
+    @Inject(method = "close",at = @At("HEAD"))
+    public void close(CallbackInfo ci){
+        BlueClient.config.getEnables().forEach(h -> {
+            try {
+                h.MCClose(getInstance());
+            } catch (Exception e) {
+                BlueClient.LOGGER.error("error on client close time",e);
+            }
+        });
     }
 }

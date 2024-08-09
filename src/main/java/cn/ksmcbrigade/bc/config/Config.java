@@ -17,7 +17,7 @@ public class Config {
     public static final File config = new File("blueClient.json");
 
     public JsonArray enables = new JsonArray();
-    public JsonArray keys = new JsonArray();
+    public JsonObject keys = new JsonObject();
     public JsonArray hacks = new JsonArray();
 
     public Config() throws IOException {
@@ -26,7 +26,7 @@ public class Config {
         }
         JsonObject object = JsonParser.parseString(FileUtils.readFileToString(config)).getAsJsonObject();
         this.enables = object.getAsJsonArray("enables");
-        this.keys = object.getAsJsonArray("keys");
+        this.keys = object.getAsJsonObject("keys");
         this.hacks = object.getAsJsonArray("hacks");
     }
 
@@ -61,6 +61,15 @@ public class Config {
             array.add(enable.getEnName());
         }
         this.enables = array;
+        save(true);
+    }
+
+    public void saveKeys() throws IOException {
+        JsonObject object = new JsonObject();
+        for (Hack hack : this.getHacks()) {
+            object.addProperty(hack.getEnName(),hack.key);
+        }
+        this.keys = object;
         save(true);
     }
 

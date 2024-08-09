@@ -1,13 +1,32 @@
 {
   "mappings": {
     "cn/ksmcbrigade/bc/mixin/MinecraftClientMixin": {
-      "<init>": "Lnet/minecraft/class_310;<init>(Lnet/minecraft/class_542;)V"
+      "<init>": "Lnet/minecraft/class_310;<init>(Lnet/minecraft/class_542;)V",
+      "close": "Lnet/minecraft/class_310;close()V",
+      "tick": "Lnet/minecraft/class_310;method_1574()V"
     },
     "cn/ksmcbrigade/bc/mixin/ModStatusMixin": {
       "isModded": "Lnet/minecraft/class_6683;method_39029()Z"
     },
+    "cn/ksmcbrigade/bc/mixin/feature/ConnectionScreenMixin": {
+      "connect(Lnet/minecraft/client/gui/screen/Screen;Lnet/minecraft/client/MinecraftClient;Lnet/minecraft/client/network/ServerAddress;Lnet/minecraft/client/network/ServerInfo;Z)V": "Lnet/minecraft/class_412;method_36877(Lnet/minecraft/class_437;Lnet/minecraft/class_310;Lnet/minecraft/class_639;Lnet/minecraft/class_642;Z)V"
+    },
+    "cn/ksmcbrigade/bc/mixin/feature/ServerListScreenMixin": {
+      "init": "Lnet/minecraft/class_500;method_25426()V"
+    },
+    "cn/ksmcbrigade/bc/mixin/handler/GameHudMixin": {
+      "<init>": "Lnet/minecraft/class_329;<init>(Lnet/minecraft/class_310;Lnet/minecraft/class_918;)V",
+      "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_332;F)V",
+      "tick()V": "Lnet/minecraft/class_329;method_1748()V"
+    },
     "cn/ksmcbrigade/bc/mixin/handler/KeybindingMixin": {
       "onKeyPressed": "Lnet/minecraft/class_304;method_1420(Lnet/minecraft/class_3675$class_306;)V"
+    },
+    "cn/ksmcbrigade/bc/mixin/handler/PlayerMixin": {
+      "tick": "Lnet/minecraft/class_1657;method_5773()V"
+    },
+    "cn/ksmcbrigade/bc/mixin/handler/WorldMixin": {
+      "tickEntity": "Lnet/minecraft/class_1937;method_18472(Ljava/util/function/Consumer;Lnet/minecraft/class_1297;)V"
     },
     "cn/ksmcbrigade/bc/mixin/render/CreateWorldScreenMixin": {
       "renderBackgroundTexture": "Lnet/minecraft/class_525;method_25434(Lnet/minecraft/class_332;)V"
@@ -28,6 +47,9 @@
       "Lnet/minecraft/client/gui/screen/option/GameOptionsScreen;renderBackground(Lnet/minecraft/client/gui/DrawContext;)V": "Lnet/minecraft/class_4667;method_25420(Lnet/minecraft/class_332;)V",
       "render": "Lnet/minecraft/class_4667;method_45626(Lnet/minecraft/class_332;Lnet/minecraft/class_353;IIF)V"
     },
+    "cn/ksmcbrigade/bc/mixin/render/HandledScreenMixin": {
+      "render": "Lnet/minecraft/class_465;method_25394(Lnet/minecraft/class_332;IIF)V"
+    },
     "cn/ksmcbrigade/bc/mixin/render/IconSetsMixin": {
       "getIcon": "Lnet/minecraft/class_8518;method_51419(Lnet/minecraft/class_3262;Ljava/lang/String;)Lnet/minecraft/class_7367;"
     },
@@ -38,7 +60,9 @@
       "renderButton": "Lnet/minecraft/class_4264;method_48579(Lnet/minecraft/class_332;IIF)V"
     },
     "cn/ksmcbrigade/bc/mixin/render/ScreenMixin": {
-      "renderBackgroundTexture": "Lnet/minecraft/class_437;method_25434(Lnet/minecraft/class_332;)V"
+      "keyPressed": "Lnet/minecraft/class_437;method_25404(III)Z",
+      "renderBackgroundTexture": "Lnet/minecraft/class_437;method_25434(Lnet/minecraft/class_332;)V",
+      "tick": "Lnet/minecraft/class_437;method_25393()V"
     },
     "cn/ksmcbrigade/bc/mixin/render/SplashOverlayMixin": {
       "Lnet/minecraft/resource/ResourceReload;getProgress()F": "Lnet/minecraft/class_4011;method_18229()F",
@@ -54,13 +78,32 @@
   "data": {
     "named:intermediary": {
       "cn/ksmcbrigade/bc/mixin/MinecraftClientMixin": {
-        "<init>": "Lnet/minecraft/class_310;<init>(Lnet/minecraft/class_542;)V"
+        "<init>": "Lnet/minecraft/class_310;<init>(Lnet/minecraft/class_542;)V",
+        "close": "Lnet/minecraft/class_310;close()V",
+        "tick": "Lnet/minecraft/class_310;method_1574()V"
       },
       "cn/ksmcbrigade/bc/mixin/ModStatusMixin": {
         "isModded": "Lnet/minecraft/class_6683;method_39029()Z"
       },
+      "cn/ksmcbrigade/bc/mixin/feature/ConnectionScreenMixin": {
+        "connect(Lnet/minecraft/client/gui/screen/Screen;Lnet/minecraft/client/MinecraftClient;Lnet/minecraft/client/network/ServerAddress;Lnet/minecraft/client/network/ServerInfo;Z)V": "Lnet/minecraft/class_412;method_36877(Lnet/minecraft/class_437;Lnet/minecraft/class_310;Lnet/minecraft/class_639;Lnet/minecraft/class_642;Z)V"
+      },
+      "cn/ksmcbrigade/bc/mixin/feature/ServerListScreenMixin": {
+        "init": "Lnet/minecraft/class_500;method_25426()V"
+      },
+      "cn/ksmcbrigade/bc/mixin/handler/GameHudMixin": {
+        "<init>": "Lnet/minecraft/class_329;<init>(Lnet/minecraft/class_310;Lnet/minecraft/class_918;)V",
+        "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_332;F)V",
+        "tick()V": "Lnet/minecraft/class_329;method_1748()V"
+      },
       "cn/ksmcbrigade/bc/mixin/handler/KeybindingMixin": {
         "onKeyPressed": "Lnet/minecraft/class_304;method_1420(Lnet/minecraft/class_3675$class_306;)V"
+      },
+      "cn/ksmcbrigade/bc/mixin/handler/PlayerMixin": {
+        "tick": "Lnet/minecraft/class_1657;method_5773()V"
+      },
+      "cn/ksmcbrigade/bc/mixin/handler/WorldMixin": {
+        "tickEntity": "Lnet/minecraft/class_1937;method_18472(Ljava/util/function/Consumer;Lnet/minecraft/class_1297;)V"
       },
       "cn/ksmcbrigade/bc/mixin/render/CreateWorldScreenMixin": {
         "renderBackgroundTexture": "Lnet/minecraft/class_525;method_25434(Lnet/minecraft/class_332;)V"
@@ -81,6 +124,9 @@
         "Lnet/minecraft/client/gui/screen/option/GameOptionsScreen;renderBackground(Lnet/minecraft/client/gui/DrawContext;)V": "Lnet/minecraft/class_4667;method_25420(Lnet/minecraft/class_332;)V",
         "render": "Lnet/minecraft/class_4667;method_45626(Lnet/minecraft/class_332;Lnet/minecraft/class_353;IIF)V"
       },
+      "cn/ksmcbrigade/bc/mixin/render/HandledScreenMixin": {
+        "render": "Lnet/minecraft/class_465;method_25394(Lnet/minecraft/class_332;IIF)V"
+      },
       "cn/ksmcbrigade/bc/mixin/render/IconSetsMixin": {
         "getIcon": "Lnet/minecraft/class_8518;method_51419(Lnet/minecraft/class_3262;Ljava/lang/String;)Lnet/minecraft/class_7367;"
       },
@@ -91,7 +137,9 @@
         "renderButton": "Lnet/minecraft/class_4264;method_48579(Lnet/minecraft/class_332;IIF)V"
       },
       "cn/ksmcbrigade/bc/mixin/render/ScreenMixin": {
-        "renderBackgroundTexture": "Lnet/minecraft/class_437;method_25434(Lnet/minecraft/class_332;)V"
+        "keyPressed": "Lnet/minecraft/class_437;method_25404(III)Z",
+        "renderBackgroundTexture": "Lnet/minecraft/class_437;method_25434(Lnet/minecraft/class_332;)V",
+        "tick": "Lnet/minecraft/class_437;method_25393()V"
       },
       "cn/ksmcbrigade/bc/mixin/render/SplashOverlayMixin": {
         "Lnet/minecraft/resource/ResourceReload;getProgress()F": "Lnet/minecraft/class_4011;method_18229()F",
