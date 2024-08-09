@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "bc",
+  "version": "${version}",
+  "name": "BlueClient",
+  "description": "Blue! Blue! Blue Client!",
+  "authors": [
+    "KSmc_brigade"
+  ],
+  "contact": {
+    "repo": "https://github.com/yiyuyan/BlueClient"
+  },
+  "license": "MIT",
+  "icon": "assets/bc/icon_256x256.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "cn.ksmcbrigade.bc.BlueClient"
+    ]
+  },
+  "mixins": [
+    "bc.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
