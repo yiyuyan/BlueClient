@@ -9,7 +9,10 @@ public class TempVars {
     public MinecraftClient MC = net.minecraft.client.MinecraftClient.getInstance();
 
     public boolean renderList = false;
+    public boolean renderConfig = false;
     public Vec2f click;
 
     public ServerInfo lastServer;
+
+    public boolean zoom = false;
 }

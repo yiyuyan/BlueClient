@@ -23,7 +23,7 @@ public class KeybindingMixin {
             try {
                 if(key.getCode()==h.key){
                     h.setEnabled(!h.enabled);
-                    if(BlueClient.temp.MC.player!=null) BlueClient.temp.MC.player.sendMessage(Text.literal(h.getName()+": "+h.enabled));
+                    if(MinecraftClient.getInstance().player!=null) BlueClient.sendToast(h.getName()+": "+h.enabled);
                 }
 
                 h.keyInput(key.getCode(),false);

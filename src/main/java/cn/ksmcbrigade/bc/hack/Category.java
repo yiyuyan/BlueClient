@@ -8,6 +8,7 @@ public enum Category {
     OTHER("OTHER"),
     COMBAT("COMBAT"),
     RENDER("RENDER"),
+    BLOCK("BLOCK"),
     MOVE("MOVE"),
     CHAT("CHAT"),
     FUN("FUN");

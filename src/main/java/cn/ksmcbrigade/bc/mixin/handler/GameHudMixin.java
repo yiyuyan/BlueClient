@@ -6,14 +6,18 @@ import cn.ksmcbrigade.bc.hack.Hack;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.hud.BossBarHud;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.render.item.ItemRenderer;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec2f;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.awt.*;
@@ -27,6 +31,11 @@ public abstract class GameHudMixin {
     @Shadow public abstract TextRenderer getTextRenderer();
 
     @Shadow public abstract int getTicks();
+
+    @Shadow @Final private static Identifier POWDER_SNOW_OUTLINE;
+    @Shadow @Final private static Identifier PUMPKIN_BLUR;
+
+    @Shadow public abstract void clear();
 
     @Unique
     private Map<Vec2f, Hack> hackListScreenSco = new HashMap<>();
@@ -47,7 +56,7 @@ public abstract class GameHudMixin {
             }
             int longest = longest(category.get());
             x += longest==-1?getTextRenderer().getWidth(category.name()): Math.max(longest, getTextRenderer().getWidth(category.name()));
-            x += 5;
+            x += 2;
             y = 0;
         }
     }
@@ -123,5 +132,41 @@ public abstract class GameHudMixin {
             }
         }
         return this.getTextRenderer().getWidth(strings.get(index));
+    }
+
+    @Redirect(method = "render",at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;renderOverlay(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/util/Identifier;F)V"))
+    public void renderOverlay(InGameHud instance, DrawContext context, Identifier texture, float opacity){
+        Hack npso = BlueClient.config.getHack("NoPowerSnowOverlay");
+        Hack npo = BlueClient.config.getHack("NoPumpkinOverlay");
+        if(texture.equals(POWDER_SNOW_OUTLINE) && npso!=null && npso.enabled) return;
+        if(texture.equals(PUMPKIN_BLUR) && npo!=null && npo.enabled) return;
+        instance.renderOverlay(context,texture,opacity);
+    }
+
+    @Redirect(method = "render",at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/BossBarHud;render(Lnet/minecraft/client/gui/DrawContext;)V"))
+    public void renderOverlay(BossBarHud instance, DrawContext context){
+        Hack nbbo = BlueClient.config.getHack("NoBossBarOverlay");
+        if(nbbo!=null && nbbo.enabled) return;
+        instance.render(context);
+    }
+
+    @Inject(method = "renderPortalOverlay",at = @At("HEAD"), cancellable = true)
+    public void renderOverlay(DrawContext context, float nauseaStrength, CallbackInfo ci){
+        Hack nbbo = BlueClient.config.getHack("NoPortalOverlay");
+        if(nbbo!=null && nbbo.enabled) ci.cancel();
+    }
+
+    @Inject(method = "renderSpyglassOverlay",at = @At("HEAD"), cancellable = true)
+    public void renderSpyglassOverlay(DrawContext context, float nauseaStrength, CallbackInfo ci){
+        Hack nbbo = BlueClient.config.getHack("NoSpyglassOverlay");
+        if(nbbo!=null && nbbo.enabled) ci.cancel();
+    }
+
+    @Inject(method = "renderHotbar",at = @At("HEAD"),cancellable = true)
+    public void hotbar(float tickDelta, DrawContext context, CallbackInfo ci){
+        Hack nbbo = BlueClient.config.getHack("Zoom");
+        if(nbbo!=null && nbbo.enabled && BlueClient.temp.zoom){
+            ci.cancel();
+        }
     }
 }

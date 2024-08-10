@@ -16,16 +16,16 @@ public class Config {
     public File file;
     public JsonObject data;
 
-    public Hack hack;
+    public String hack;
 
-    public Config(Hack hack,JsonObject def) throws IOException {
+    public Config(String hack,JsonObject def) throws IOException {
         this.hack = hack;
         this.data = def;
         this.save(false);
     }
 
     public void save(boolean t) throws IOException {
-        BlueClient.config.saveHack(this.hack.getEnName(),this);
+        BlueClient.config.saveHack(this.hack,this);
     }
 
     @Nullable

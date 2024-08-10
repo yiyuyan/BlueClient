@@ -1,9 +1,11 @@
 package cn.ksmcbrigade.bc.mixin;
 
 import cn.ksmcbrigade.bc.BlueClient;
+import cn.ksmcbrigade.bc.hack.Hack;
 import cn.ksmcbrigade.bc.utils.DarkUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.RunArgs;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ServerInfo;
 import net.minecraft.client.resource.language.I18n;
@@ -19,6 +21,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.io.IOException;
 
@@ -98,5 +101,11 @@ public abstract class MinecraftClientMixin {
                 BlueClient.LOGGER.error("error on client close time",e);
             }
         });
+    }
+
+    @Inject(method = "isDemo",at = @At("RETURN"), cancellable = true)
+    public void renderOverlay(CallbackInfoReturnable<Boolean> cir){
+        Hack nbbo = BlueClient.config.getHack("AntiDemo");
+        if(nbbo!=null && nbbo.enabled) cir.setReturnValue(false);
     }
 }

@@ -1,0 +1,8 @@
+accessWidener   v2  named
+accessible field net/minecraft/client/option/KeyBinding boundKey Lnet/minecraft/client/util/InputUtil$Key;
+accessible class net/minecraft/client/option/GameOptions$Visitor
+accessible field net/minecraft/client/toast/SystemToast$Type displayDuration J
+mutable field net/minecraft/client/toast/SystemToast$Type displayDuration J
+accessible method net/minecraft/client/gui/hud/InGameHud renderOverlay (Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/util/Identifier;F)V
+accessible field net/minecraft/client/MinecraftClient itemUseCooldown I
+accessible field net/minecraft/client/MinecraftClient attackCooldown I

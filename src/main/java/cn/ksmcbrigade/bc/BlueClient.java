@@ -2,14 +2,17 @@ package cn.ksmcbrigade.bc;
 
 import cn.ksmcbrigade.bc.config.Config;
 import cn.ksmcbrigade.bc.config.TempVars;
-import cn.ksmcbrigade.bc.hack.Category;
-import cn.ksmcbrigade.bc.hack.Hack;
+import cn.ksmcbrigade.bc.utils.InitUtils;
 import com.mojang.logging.LogUtils;
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.client.toast.SystemToast;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class BlueClient implements ClientModInitializer {
 
@@ -26,6 +29,7 @@ public class BlueClient implements ClientModInitializer {
     public static final TempVars temp = new TempVars();
 
     static {
+        SystemToast.Type.UNSECURE_SERVER_WARNING.displayDuration = 550L;
         try {
             config = new Config();
         } catch (IOException e) {
@@ -37,38 +41,20 @@ public class BlueClient implements ClientModInitializer {
     public void onInitializeClient() {
         LOGGER.info("Hello Blue Client!");
 
-        //TEST
-        for(int i=0;i<5;i++){
-            try {
-                new Hack(Category.OTHER,"Test-"+i);
-                System.out.println("added");
-            } catch (IOException | NoSuchFieldException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
+        try {
+            InitUtils.initHacks();
+            LOGGER.info("Initialized the hacks.");
+            InitUtils.initEnables();
+            LOGGER.info("Initialized the hacks enabled.");
+        } catch (Exception e) {
+            LOGGER.error("Can't init the hacks.",e);
+            throw new RuntimeException(e);
         }
-        for(int i=6;i<10;i++){
-            try {
-                new Hack(Category.FUN,"Test-"+i);
-                System.out.println("added");
-            } catch (IOException | NoSuchFieldException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        for(int i=11;i<25;i++){
-            try {
-                new Hack(Category.UI,"Test-"+i);
-                System.out.println("added");
-            } catch (IOException | NoSuchFieldException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        for(int i=26;i<30;i++){
-            try {
-                new Hack(Category.MOVE,"Test-"+i);
-                System.out.println("added");
-            } catch (IOException | NoSuchFieldException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
+    }
+
+    public static void sendToast(String context){
+        if(temp.MC.getToastManager()==null) return;
+        SystemToast toast = new SystemToast(SystemToast.Type.UNSECURE_SERVER_WARNING, Text.of("BlueClient"),Text.of(context));
+        temp.MC.getToastManager().add(toast);
     }
 }
