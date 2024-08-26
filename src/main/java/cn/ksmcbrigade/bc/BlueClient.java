@@ -5,6 +5,7 @@ import cn.ksmcbrigade.bc.config.TempVars;
 import cn.ksmcbrigade.bc.utils.InitUtils;
 import com.mojang.logging.LogUtils;
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.toast.SystemToast;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -41,6 +42,9 @@ public class BlueClient implements ClientModInitializer {
     public void onInitializeClient() {
         LOGGER.info("Hello Blue Client!");
 
+        temp.MC = MinecraftClient.getInstance();
+        //temp.MC = null;
+
         try {
             InitUtils.initHacks();
             LOGGER.info("Initialized the hacks.");
@@ -53,8 +57,8 @@ public class BlueClient implements ClientModInitializer {
     }
 
     public static void sendToast(String context){
-        if(temp.MC.getToastManager()==null) return;
+        if(MinecraftClient.getInstance().getToastManager()==null) return;
         SystemToast toast = new SystemToast(SystemToast.Type.UNSECURE_SERVER_WARNING, Text.of("BlueClient"),Text.of(context));
-        temp.MC.getToastManager().add(toast);
+        MinecraftClient.getInstance().getToastManager().add(toast);
     }
 }

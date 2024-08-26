@@ -3,16 +3,20 @@ package cn.ksmcbrigade.bc.hack;
 import cn.ksmcbrigade.bc.BlueClient;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Language;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
 
-public class Hack {
+public abstract class Hack {
     public final String name;
     public boolean enabled = false;
     public int key = -1;
@@ -104,4 +108,9 @@ public class Hack {
     public void disabled(MinecraftClient MC) throws Exception{}
 
     public void MCClose(MinecraftClient MC) throws Exception{}
+
+    public void breakEvent(MinecraftClient instance, @Nullable ClientPlayerInteractionManager interactionManager) throws Exception{
+    }
+
+    public void breakEvent(MinecraftClient instance, @Nullable ClientPlayerInteractionManager interactionManager, @NotNull BlockPos blockPos, @NotNull Direction direction) throws Exception{}
 }

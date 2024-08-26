@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class BlockStateBaseMixin {
     @Shadow @Deprecated public abstract FluidState getFluidState(BlockState state);
 
-    @Inject(method = {"getCollisionShape","getOutlineShape"},at = @At("RETURN"), cancellable = true)
+    @Inject(method = {"getCollisionShape"},at = @At("RETURN"), cancellable = true)
     public void shape(BlockState state, BlockView world, BlockPos pos, ShapeContext context, CallbackInfoReturnable<VoxelShape> cir){
         if(getFluidState(state).isEmpty()) return;
         MinecraftClient MC = MinecraftClient.getInstance();

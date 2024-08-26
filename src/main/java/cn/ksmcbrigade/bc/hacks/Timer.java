@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Timer extends Hack {
     public Timer() throws IOException, NoSuchFieldException, IllegalAccessException {
-        super(Category.MOVE, "Timer",false, GLFW.GLFW_KEY_Y,get());
+        super(Category.OTHER, "Timer",false, GLFW.GLFW_KEY_Y,get());
     }
 
     public static Config get() throws IOException {

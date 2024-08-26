@@ -6,3 +6,8 @@ mutable field net/minecraft/client/toast/SystemToast$Type displayDuration J
 accessible method net/minecraft/client/gui/hud/InGameHud renderOverlay (Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/util/Identifier;F)V
 accessible field net/minecraft/client/MinecraftClient itemUseCooldown I
 accessible field net/minecraft/client/MinecraftClient attackCooldown I
+accessible field net/minecraft/client/network/ClientPlayerInteractionManager blockBreakingCooldown I
+accessible method net/minecraft/client/render/WorldRenderer renderEntity (Lnet/minecraft/entity/Entity;DDDFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;)V
+accessible field net/minecraft/client/render/WorldRenderer bufferBuilders Lnet/minecraft/client/render/BufferBuilderStorage;
+accessible method net/minecraft/client/render/WorldRenderer canDrawEntityOutlines ()Z
+accessible field net/minecraft/client/render/WorldRenderer entityRenderDispatcher Lnet/minecraft/client/render/entity/EntityRenderDispatcher;

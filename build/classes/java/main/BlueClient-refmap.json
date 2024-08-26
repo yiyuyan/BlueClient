@@ -9,6 +9,12 @@
     "cn/ksmcbrigade/bc/mixin/ModStatusMixin": {
       "isModded": "Lnet/minecraft/class_6683;method_39029()Z"
     },
+    "cn/ksmcbrigade/bc/mixin/ex/DeathScreenMixin": {
+      "init": "Lnet/minecraft/class_418;method_25426()V",
+      "net/minecraft/client/gui/screen/DeathScreen.buttons:Ljava/util/List;": "Lnet/minecraft/class_418;field_33809:Ljava/util/List;",
+      "net/minecraft/client/gui/screen/Screen.render(Lnet/minecraft/client/gui/DrawContext;IIF)V": "Lnet/minecraft/class_437;method_25394(Lnet/minecraft/class_332;IIF)V",
+      "render": "Lnet/minecraft/class_418;method_25394(Lnet/minecraft/class_332;IIF)V"
+    },
     "cn/ksmcbrigade/bc/mixin/ex/KeybindListEntryMixin": {
       "Lnet/minecraft/client/gui/widget/ButtonWidget;setMessage(Lnet/minecraft/text/Text;)V": "Lnet/minecraft/class_4185;method_25355(Lnet/minecraft/class_2561;)V",
       "Lnet/minecraft/client/gui/widget/ButtonWidget;setTooltip(Lnet/minecraft/client/gui/tooltip/Tooltip;)V": "Lnet/minecraft/class_4185;method_47400(Lnet/minecraft/class_7919;)V",
@@ -22,8 +28,7 @@
       "shouldDrawSide": "Lnet/minecraft/class_2248;method_9607(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;Lnet/minecraft/class_2338;)Z"
     },
     "cn/ksmcbrigade/bc/mixin/feature/BlockStateBaseMixin": {
-      "getCollisionShape": "Lnet/minecraft/class_4970;method_9549(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;",
-      "getOutlineShape": "Lnet/minecraft/class_4970;method_9530(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;"
+      "getCollisionShape": "Lnet/minecraft/class_4970;method_9549(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;"
     },
     "cn/ksmcbrigade/bc/mixin/feature/CameraMixin": {
       "clipToSpace": "Lnet/minecraft/class_4184;method_19318(D)D",
@@ -46,6 +51,12 @@
     "cn/ksmcbrigade/bc/mixin/feature/LivingMixin": {
       "hasStatusEffect": "Lnet/minecraft/class_1309;method_6059(Lnet/minecraft/class_1291;)Z"
     },
+    "cn/ksmcbrigade/bc/mixin/feature/NetworkHandlerMixin": {
+      "sendInternal": "Lnet/minecraft/class_2535;method_36942(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;Lnet/minecraft/class_2539;Lnet/minecraft/class_2539;)V"
+    },
+    "cn/ksmcbrigade/bc/mixin/feature/PowerSnowBlockMixin": {
+      "canWalkOnPowderSnow": "Lnet/minecraft/class_5635;method_32355(Lnet/minecraft/class_1297;)Z"
+    },
     "cn/ksmcbrigade/bc/mixin/feature/ServerListScreenMixin": {
       "init": "Lnet/minecraft/class_500;method_25426()V"
     },
@@ -56,6 +67,12 @@
     "cn/ksmcbrigade/bc/mixin/feature/WorldRendererMixin": {
       "hasBlindnessOrDarkness": "Lnet/minecraft/class_761;method_43788(Lnet/minecraft/class_4184;)Z",
       "tickRainSplashing": "Lnet/minecraft/class_761;method_22713(Lnet/minecraft/class_4184;)V"
+    },
+    "cn/ksmcbrigade/bc/mixin/handler/ClientPlayerInteractionManagerMixin": {
+      "breakBlock": "Lnet/minecraft/class_636;method_2899(Lnet/minecraft/class_2338;)Z",
+      "getReachDistance": "Lnet/minecraft/class_636;method_2904()F",
+      "hasExtendedReach": "Lnet/minecraft/class_636;method_2926()Z",
+      "updateBlockBreakingProgress": "Lnet/minecraft/class_636;method_2902(Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;)Z"
     },
     "cn/ksmcbrigade/bc/mixin/handler/GameHudMixin": {
       "<init>": "Lnet/minecraft/class_329;<init>(Lnet/minecraft/class_310;Lnet/minecraft/class_918;)V",
@@ -71,6 +88,8 @@
       "onKeyPressed": "Lnet/minecraft/class_304;method_1420(Lnet/minecraft/class_3675$class_306;)V"
     },
     "cn/ksmcbrigade/bc/mixin/handler/PlayerMixin": {
+      "Lnet/minecraft/entity/player/PlayerEntity;getAttributeValue(Lnet/minecraft/entity/attribute/EntityAttribute;)D": "Lnet/minecraft/class_1657;method_26825(Lnet/minecraft/class_1320;)D",
+      "attack": "Lnet/minecraft/class_1657;method_7324(Lnet/minecraft/class_1297;)V",
       "tick": "Lnet/minecraft/class_1657;method_5773()V"
     },
     "cn/ksmcbrigade/bc/mixin/handler/WorldMixin": {
@@ -141,6 +160,12 @@
       "cn/ksmcbrigade/bc/mixin/ModStatusMixin": {
         "isModded": "Lnet/minecraft/class_6683;method_39029()Z"
       },
+      "cn/ksmcbrigade/bc/mixin/ex/DeathScreenMixin": {
+        "init": "Lnet/minecraft/class_418;method_25426()V",
+        "net/minecraft/client/gui/screen/DeathScreen.buttons:Ljava/util/List;": "Lnet/minecraft/class_418;field_33809:Ljava/util/List;",
+        "net/minecraft/client/gui/screen/Screen.render(Lnet/minecraft/client/gui/DrawContext;IIF)V": "Lnet/minecraft/class_437;method_25394(Lnet/minecraft/class_332;IIF)V",
+        "render": "Lnet/minecraft/class_418;method_25394(Lnet/minecraft/class_332;IIF)V"
+      },
       "cn/ksmcbrigade/bc/mixin/ex/KeybindListEntryMixin": {
         "Lnet/minecraft/client/gui/widget/ButtonWidget;setMessage(Lnet/minecraft/text/Text;)V": "Lnet/minecraft/class_4185;method_25355(Lnet/minecraft/class_2561;)V",
         "Lnet/minecraft/client/gui/widget/ButtonWidget;setTooltip(Lnet/minecraft/client/gui/tooltip/Tooltip;)V": "Lnet/minecraft/class_4185;method_47400(Lnet/minecraft/class_7919;)V",
@@ -154,8 +179,7 @@
         "shouldDrawSide": "Lnet/minecraft/class_2248;method_9607(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;Lnet/minecraft/class_2338;)Z"
       },
       "cn/ksmcbrigade/bc/mixin/feature/BlockStateBaseMixin": {
-        "getCollisionShape": "Lnet/minecraft/class_4970;method_9549(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;",
-        "getOutlineShape": "Lnet/minecraft/class_4970;method_9530(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;"
+        "getCollisionShape": "Lnet/minecraft/class_4970;method_9549(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;"
       },
       "cn/ksmcbrigade/bc/mixin/feature/CameraMixin": {
         "clipToSpace": "Lnet/minecraft/class_4184;method_19318(D)D",
@@ -178,6 +202,12 @@
       "cn/ksmcbrigade/bc/mixin/feature/LivingMixin": {
         "hasStatusEffect": "Lnet/minecraft/class_1309;method_6059(Lnet/minecraft/class_1291;)Z"
       },
+      "cn/ksmcbrigade/bc/mixin/feature/NetworkHandlerMixin": {
+        "sendInternal": "Lnet/minecraft/class_2535;method_36942(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;Lnet/minecraft/class_2539;Lnet/minecraft/class_2539;)V"
+      },
+      "cn/ksmcbrigade/bc/mixin/feature/PowerSnowBlockMixin": {
+        "canWalkOnPowderSnow": "Lnet/minecraft/class_5635;method_32355(Lnet/minecraft/class_1297;)Z"
+      },
       "cn/ksmcbrigade/bc/mixin/feature/ServerListScreenMixin": {
         "init": "Lnet/minecraft/class_500;method_25426()V"
       },
@@ -188,6 +218,12 @@
       "cn/ksmcbrigade/bc/mixin/feature/WorldRendererMixin": {
         "hasBlindnessOrDarkness": "Lnet/minecraft/class_761;method_43788(Lnet/minecraft/class_4184;)Z",
         "tickRainSplashing": "Lnet/minecraft/class_761;method_22713(Lnet/minecraft/class_4184;)V"
+      },
+      "cn/ksmcbrigade/bc/mixin/handler/ClientPlayerInteractionManagerMixin": {
+        "breakBlock": "Lnet/minecraft/class_636;method_2899(Lnet/minecraft/class_2338;)Z",
+        "getReachDistance": "Lnet/minecraft/class_636;method_2904()F",
+        "hasExtendedReach": "Lnet/minecraft/class_636;method_2926()Z",
+        "updateBlockBreakingProgress": "Lnet/minecraft/class_636;method_2902(Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;)Z"
       },
       "cn/ksmcbrigade/bc/mixin/handler/GameHudMixin": {
         "<init>": "Lnet/minecraft/class_329;<init>(Lnet/minecraft/class_310;Lnet/minecraft/class_918;)V",
@@ -203,6 +239,8 @@
         "onKeyPressed": "Lnet/minecraft/class_304;method_1420(Lnet/minecraft/class_3675$class_306;)V"
       },
       "cn/ksmcbrigade/bc/mixin/handler/PlayerMixin": {
+        "Lnet/minecraft/entity/player/PlayerEntity;getAttributeValue(Lnet/minecraft/entity/attribute/EntityAttribute;)D": "Lnet/minecraft/class_1657;method_26825(Lnet/minecraft/class_1320;)D",
+        "attack": "Lnet/minecraft/class_1657;method_7324(Lnet/minecraft/class_1297;)V",
         "tick": "Lnet/minecraft/class_1657;method_5773()V"
       },
       "cn/ksmcbrigade/bc/mixin/handler/WorldMixin": {

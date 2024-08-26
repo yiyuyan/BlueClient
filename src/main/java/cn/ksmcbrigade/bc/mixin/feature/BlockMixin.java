@@ -31,7 +31,13 @@ public class BlockMixin {
 
     @Unique
     private static boolean in(BlockState blockState){
-        String id = Registries.BLOCK.getId(blockState.getBlock()).toString();
+        String id;
+        try {
+            id = blockState.getBlock().getRegistryEntry().getKey().get().getValue().toString();
+        }
+        catch (Exception e){
+            id = Registries.BLOCK.getId(blockState.getBlock()).toString();
+        }
         for (JsonElement blocks : BlueClient.config.getHack("X-Ray").getConfig().data.getAsJsonArray("blocks").asList()) {
             if(id.equalsIgnoreCase(blocks.getAsString())) return true;
         }

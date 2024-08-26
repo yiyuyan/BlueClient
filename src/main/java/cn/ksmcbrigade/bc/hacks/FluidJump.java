@@ -22,7 +22,7 @@ public class FluidJump extends Hack {
     public void playerTick(MinecraftClient MC, @Nullable PlayerEntity player) {
         if(MC.options.sneakKey.isPressed()) return;
         if(player==null) return;
-        if(player.isPushedByFluids()){
+        if(player.isTouchingWater()){
             Vec3d vec3 = player.getVelocity();
             player.setVelocity(0,0.11,0);
             tick = 0;

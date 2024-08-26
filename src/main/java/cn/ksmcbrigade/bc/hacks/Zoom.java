@@ -22,6 +22,7 @@ public class Zoom extends Hack {
 
     @Override
     public void keyInput(int key, boolean screen) {
+        if(screen) return;
         if(key== GLFW.GLFW_KEY_V){
             BlueClient.temp.zoom = !BlueClient.temp.zoom;
         }
