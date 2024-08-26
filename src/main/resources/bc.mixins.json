@@ -1,0 +1,48 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "cn.ksmcbrigade.bc.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "MinecraftClientMixin",
+    "ModStatusMixin",
+    "ex.DeathScreenMixin",
+    "ex.KeybindListEntryMixin",
+    "ex.OptionInstanceMixin",
+    "ex.OptionMixin",
+    "feature.BlockMixin",
+    "feature.BlockStateBaseMixin",
+    "feature.CameraMixin",
+    "feature.ClientPlayerEntityMixin",
+    "feature.ConnectionScreenMixin",
+    "feature.GameRendererMixin",
+    "feature.InventoryMixin",
+    "feature.LivingMixin",
+    "feature.NetworkHandlerMixin",
+    "feature.PowerSnowBlockMixin",
+    "feature.ServerListScreenMixin",
+    "feature.TimerMixin",
+    "feature.WorldRendererMixin",
+    "handler.ClientPlayerInteractionManagerMixin",
+    "handler.GameHudMixin",
+    "handler.KeybindingMixin",
+    "handler.PlayerMixin",
+    "handler.WorldMixin",
+    "render.CreateWorldScreenMixin",
+    "render.CreditsScreenMixin",
+    "render.EntryListWidgetMixin",
+    "render.GameOptionsScreenMixin",
+    "render.HandledScreenMixin",
+    "render.IconSetsMixin",
+    "render.PressableWidgetMixin",
+    "render.ScreenMixin",
+    "render.SplashOverlayMixin",
+    "render.SystemToastMixin",
+    "render.TitleScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
